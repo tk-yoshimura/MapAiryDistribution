@@ -21,16 +21,16 @@ When |*x*| is large, the following equation can be used as an asymptotic express
 ![mapairy5](figures/mapairy5.svg)  
 ![mapairy6](figures/mapairy6.svg)  
 
-That is, when *x* -> &infty;  
+That is, when *x* &rarr; &infin;  
 ![mapairy10](figures/mapairy10.svg)  
-That is, when *x* -> -&infty;  
+That is, when *x* &rarr; -&infin;  
 ![mapairy11](figures/mapairy11.svg)  
 
 Fortunately, when x is large, the exponential function annihilates and integral evaluation becomes easy.  
 Otherwise, the coefficients must be evaluated by adding up with the series expansion of the exponential function.  
 ![mapairy7](figures/mapairy7.svg)  
 
-The coefficients of the series expansion are obtained by the recurrence relation as follows:
+The coefficients of the series expansion are obtained by the recurrence relation as follows:  
 ![mapairy8](figures/mapairy8.svg)  
 
 ![mapairy9](figures/mapairy9.svg)  
