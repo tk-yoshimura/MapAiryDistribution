@@ -30,7 +30,7 @@ The coefficients of the series expansion are obtained by the recurrence relation
 
 ![mapairy9](figures/mapairy9.svg)  
 
-Evaluate these equations collectively:
+Evaluate these equations collectively:  
 *x* &rarr; &infin;:  
 ![mapairy10](figures/mapairy10.svg)  
 *x* &rarr; -&infin;:  
