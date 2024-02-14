@@ -64,5 +64,5 @@
 
 \begin{align*}
   -x \mathrm{Ai}(x^2) - \mathrm{Ai}'(x^2) \sim \frac{\sqrt{x}}{2\sqrt{\pi}} \exp \left( \frac{2}{3} x^3 \right)
-   \left( \sum_{n=1}^{\infty} \frac{2}{1-6n}  \frac{\prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
+   \left( \sum_{n=0}^{\infty} \frac{2}{1-6n}  \frac{\prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
 \end{align*}
