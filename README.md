@@ -13,7 +13,7 @@ The scaling factor *c* of the stable distribution is standardize the following:
 ![mapairy2](figures/mapairy2.svg)  
 
 ## Numerical Evaluation
-The series expansion of Ai and Ai' with argument *x* squared is as follows: 
+The series expansion of Ai and Ai' with argument *x* squared is as follows:  
 ![mapairy3](figures/mapairy3.svg)  
 ![mapairy4](figures/mapairy4.svg)  
 
