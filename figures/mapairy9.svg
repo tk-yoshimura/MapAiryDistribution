@@ -11,9 +11,9 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="170.4873pt"
+   width="143.4873pt"
    height="47.042515pt"
-   viewBox="141.81959 73.723535 170.48731 47.042514"
+   viewBox="141.81959 73.723535 143.48731 47.042514"
    id="svg139"
    sodipodi:docname="mapairy9.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
@@ -47,8 +47,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="4.1550278"
-     inkscape:cx="22.284666"
-     inkscape:cy="38.719856"
+     inkscape:cx="99.798483"
+     inkscape:cy="44.20881"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -56,8 +56,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid4882"
-       originx="-10.715958"
-       originy="0.21918005" />
+       originx="-10.715954"
+       originy="0.21918179" />
   </sodipodi:namedview>
   <defs
      id="defs24">
@@ -152,7 +152,7 @@
   </defs>
   <g
      id="page1"
-     transform="translate(-10.715958,0.07283623)">
+     transform="translate(-10.715954,0.07283623)">
     <use
        x="152.01749"
        y="88.609444"
@@ -184,164 +184,146 @@
        width="100%"
        height="100%" />
     <use
-       x="193.74742"
-       y="81.735245"
-       xlink:href="#g4-40"
-       id="use34"
-       width="100%"
-       height="100%" />
-    <use
-       x="197.6218"
-       y="81.735245"
-       xlink:href="#g0-0"
-       id="use36"
-       width="100%"
-       height="100%" />
-    <use
-       x="205.37054"
-       y="81.735245"
-       xlink:href="#g4-49"
-       id="use38"
-       width="100%"
-       height="100%" />
-    <use
-       x="210.35188"
-       y="81.735245"
-       xlink:href="#g4-41"
-       id="use40"
-       width="100%"
-       height="100%" />
-    <use
-       x="214.22626"
-       y="78.119881"
-       xlink:href="#g3-110"
-       id="use42"
-       width="100%"
-       height="100%" />
-    <use
        x="221.30965"
        y="74.263199"
        xlink:href="#g6-81"
        id="use44"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="230.71883"
        y="76.726166"
        xlink:href="#g3-110"
        id="use46"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="230.71883"
        y="84.724075"
        xlink:href="#g3-107"
        id="use48"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="235.12248"
        y="84.724075"
        xlink:href="#g5-61"
        id="use50"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="241.23846"
        y="84.724075"
        xlink:href="#g5-49"
        id="use52"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="245.70784"
        y="81.735245"
        xlink:href="#g4-40"
        id="use54"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="249.58221"
        y="81.735245"
        xlink:href="#g4-54"
        id="use56"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="254.56355"
        y="81.735245"
        xlink:href="#g2-107"
        id="use58"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="262.27762"
        y="81.735245"
        xlink:href="#g0-0"
        id="use60"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="272.24023"
        y="81.735245"
        xlink:href="#g4-49"
        id="use62"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="277.22159"
        y="81.735245"
        xlink:href="#g4-41"
        id="use64"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="281.09595"
        y="81.735245"
        xlink:href="#g4-40"
        id="use66"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="284.97034"
        y="81.735245"
        xlink:href="#g4-54"
        id="use68"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="289.95166"
        y="81.735245"
        xlink:href="#g2-107"
        id="use70"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="297.66577"
        y="81.735245"
        xlink:href="#g0-0"
        id="use72"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="307.62836"
        y="81.735245"
        xlink:href="#g4-53"
        id="use74"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="312.60971"
        y="81.735245"
        xlink:href="#g4-41"
        id="use76"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <rect
-       x="193.74742"
-       y="85.919533"
-       height="0.39848399"
-       width="122.73663"
+       x="193.5696"
+       y="86.006615"
+       height="0.31140101"
+       width="95.914482"
        id="rect78" />
     <use
        x="243.04922"
@@ -349,42 +331,48 @@
        xlink:href="#g4-52"
        id="use80"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="248.03056"
        y="95.443314"
        xlink:href="#g4-56"
        id="use82"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="253.0119"
        y="92.565216"
        xlink:href="#g3-110"
        id="use84"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="258.43491"
        y="95.443314"
        xlink:href="#g2-110"
        id="use86"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="264.41483"
        y="95.443314"
        xlink:href="#g4-33"
        id="use88"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="321.00043"
        y="88.609444"
        xlink:href="#g2-59"
        id="use90"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-27)" />
     <use
        x="141.81958"
        y="113.64017"
@@ -426,98 +414,103 @@
        width="100%"
        height="100%" />
     <use
-       x="192.5519"
-       y="113.64017"
-       xlink:href="#g0-0"
-       id="use102"
-       width="100%"
-       height="100%" />
-    <use
        x="201.49617"
        y="106.90036"
        xlink:href="#g4-40"
        id="use104"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="205.37054"
        y="106.90036"
        xlink:href="#g4-54"
        id="use106"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="210.35188"
        y="106.90036"
        xlink:href="#g2-110"
        id="use108"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="218.54567"
        y="106.90036"
        xlink:href="#g0-0"
        id="use110"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="228.50829"
        y="106.90036"
        xlink:href="#g4-49"
        id="use112"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="233.48962"
        y="106.90036"
        xlink:href="#g4-41"
        id="use114"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="237.364"
        y="106.90036"
        xlink:href="#g4-40"
        id="use116"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="241.23837"
        y="106.90036"
        xlink:href="#g4-54"
        id="use118"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="246.21971"
        y="106.90036"
        xlink:href="#g2-110"
        id="use120"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="254.4135"
        y="106.90036"
        xlink:href="#g0-0"
        id="use122"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="264.3761"
        y="106.90036"
        xlink:href="#g4-53"
        id="use124"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="269.35745"
        y="106.90036"
        xlink:href="#g4-41"
        id="use126"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <rect
-       x="201.49617"
+       x="193.99617"
        y="110.95026"
        height="0.39848399"
        width="71.735626"
@@ -528,27 +521,31 @@
        xlink:href="#g4-52"
        id="use130"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="234.37402"
        y="120.47404"
        xlink:href="#g4-56"
        id="use132"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="239.35536"
        y="120.47404"
        xlink:href="#g2-110"
        id="use134"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
     <use
        x="277.74817"
        y="113.64017"
        xlink:href="#g2-58"
        id="use136"
        width="100%"
-       height="100%" />
+       height="100%"
+       transform="translate(-7.5)" />
   </g>
 </svg>
