@@ -41,3 +41,7 @@
 \begin{align*}
   p(x) = p(x; \mu=0, c=1/\sqrt[3]{18})
 \end{align*}
+
+\begin{align*}
+  \exp \left( \frac{2}{3} x^3 \right) = \sum_{n=0}^{\infty} \frac{(2/3)^n x^{3n}}{n!}
+\end{align*}
