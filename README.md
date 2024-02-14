@@ -25,6 +25,10 @@ Fortunately, when x is large, the exponential function annihilates and integral 
 Otherwise, the coefficients must be evaluated by adding up with the series expansion of the exponential function.  
 ![mapairy7](figures/mapairy7.svg)  
 
+The coefficients of the series expansion are obtained by the recurrence relation as follows:
+![mapairy8](figures/mapairy8.svg)  
+![mapairy9](figures/mapairy9.svg)  
+
 ## Statistics
 
 |stat|x|note|
