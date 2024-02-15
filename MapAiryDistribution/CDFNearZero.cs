@@ -5,6 +5,10 @@ namespace MapAiryDistribution {
         private static readonly List<(MultiPrecision<M> c0, MultiPrecision<M> c1)> airycoef_table = [], pdfcoef_table = [], cdfcoef_table = [];
 
         public static MultiPrecision<N> Value(MultiPrecision<N> x, bool complementary = false, int max_terms = 8192) {
+            if (x == 0) { 
+                return complementary ? MultiPrecision<N>.Div(1, 3) : MultiPrecision<N>.Div(2, 3);
+            }
+
             MultiPrecision<M> xe = x.Convert<M>();
             MultiPrecision<M> x3 = MultiPrecision<M>.Cube(xe);
 
