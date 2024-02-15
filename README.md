@@ -5,6 +5,9 @@ In probability theory, the Map-Airy distribution (or Airy distribution of the 'M
 This distribution is a special case of a stable distribution with shape parameter &alpha; = 3/2 and skewness parameter &beta; = 1.  
 There is also a definition with &beta; = -1, which is inverted in the x-axis direction.  
 
+![pdf](figures/mapairy_pdf.svg)  
+![pdf-loglog](figures/mapairy_pdf_loglog.svg)  
+
 ## Definition
 The Map-Airy distribution is as follows:  
 ![mapairy1](figures/mapairy1.svg)  
