@@ -34,7 +34,7 @@ The coefficients of the series expansion are obtained by the recurrence relation
 ![mapairy9](figures/mapairy9.svg)  
 
 Evaluate these equations collectively:  
-near zero *x*:  
+*x* near 0:  
 ![mapairy12](figures/mapairy12.svg)  
 ![mapairy13](figures/mapairy13.svg)  
 *x* &rarr; &infin;:  
@@ -42,7 +42,7 @@ near zero *x*:
 *x* &rarr; -&infin;:  
 ![mapairy11](figures/mapairy11.svg)  
 
-Remarkably, the cumulative probability to x=0 is exactly 2/3:  
+Remarkably, the cumulative probability to *x*=0 is exactly 2/3:  
 ![mapairy14](figures/mapairy14.svg)  
 
 ## Statistics

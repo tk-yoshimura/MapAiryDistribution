@@ -7,6 +7,13 @@ namespace MapAiryDistribution {
             using (StreamWriter sw = new("../../../../results/cdf_precision150.csv")) {
                 sw.WriteLine("x,cdf(x),ccdf(x)");
 
+                for (MultiPrecision<Pow2.N16> x = -8.75, h = 1 / 64d; x < -8; x += h) {
+                    MultiPrecision<Pow2.N16> y = CDFN16.Value(x, complementary: false);
+
+                    Console.WriteLine($"{x}\n{y}");
+                    sw.WriteLine($"{x},{y},{1 - y}");
+                }
+
                 for (MultiPrecision<Pow2.N16> x0 = 8; x0 > 1; x0 /= 2) {
                     for (MultiPrecision<Pow2.N16> x = -x0, h = x0 / 512; x < -x0 / 2; x += h) {
                         MultiPrecision<Pow2.N16> y = CDFN16.Value(x, complementary: false);
