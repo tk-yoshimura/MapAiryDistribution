@@ -7,6 +7,7 @@ There is also a definition with &beta; = -1, which is inverted in the x-axis dir
 
 ![pdf](figures/mapairy_pdf.svg)  
 ![pdf-loglog](figures/mapairy_pdf_loglog.svg)  
+![cdf](figures/mapairy_cdf.svg)  
 
 ## Definition
 The Map-Airy distribution is as follows:  
