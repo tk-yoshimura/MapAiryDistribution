@@ -53,16 +53,26 @@
 \end{eqnarray*}
 
 \begin{eqnarray*}
-  s_n &:=& \frac{ (-1)^n \prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n!} ~,\\
-  s_{n \geq 1} &=& -\frac{(6n-1)(6n-5)}{48 n}~.
+  s_n &:=& \frac{ \prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n!} ~,\\
+  s_{n \geq 1} &=& \frac{(6n-1)(6n-5)}{48 n} s_{n-1}~.
 \end{eqnarray*}
 
 \begin{align*}
-  -x \mathrm{Ai}(x^2) - \mathrm{Ai}'(x^2) \sim \frac{\sqrt{x}}{2\sqrt{\pi}} \exp \left( -\frac{2}{3} x^3 \right)
-   \left( \sum_{n=1}^{\infty} \frac{12n}{1-6n}  \frac{(-1)^n \prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
+  -x \mathrm{Ai}(x^2) - \mathrm{Ai}'(x^2) \sim \sqrt{\frac{x}{\pi}} \exp \left( -\frac{2}{3} x^3 \right)
+   \left( \sum_{n=1}^{\infty} \frac{6n}{1-6n}  \frac{(-1)^n \prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
 \end{align*}
 
 \begin{align*}
-  -x \mathrm{Ai}(x^2) - \mathrm{Ai}'(x^2) \sim \frac{\sqrt{x}}{2\sqrt{\pi}} \exp \left( \frac{2}{3} x^3 \right)
-   \left( \sum_{n=0}^{\infty} \frac{2}{1-6n}  \frac{\prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
+  -x \mathrm{Ai}(x^2) - \mathrm{Ai}'(x^2) \sim \sqrt{\frac{x}{\pi}} \exp \left( \frac{2}{3} x^3 \right)
+   \left( \sum_{n=0}^{\infty} \frac{1}{1-6n}  \frac{\prod_{k=1}^{n} (6k-1)(6k-5)}{48^n n! x^{3n}} \right)
+\end{align*}
+
+\begin{align*}
+  \mathrm{Ai}(x^2) = \frac{1}{\Gamma(2/3) 3^{2/3} } \sum_{n=0}^{\infty} \frac{ \prod_{k=1}^{n} (3k-2) x^{6 n} }{(3n)!}
+                   - \frac{1}{\Gamma(1/3) 3^{1/3} } \sum_{n=0}^{\infty} \frac{ \prod_{k=1}^{n} (3k-1) x^{6 n+2} }{(3n+1)!}
+\end{align*}
+
+\begin{align*}
+  \mathrm{Ai}'(x^2) = -\frac{1}{\Gamma(1/3) 3^{1/3} } \sum_{n=0}^{\infty} \frac{ \prod_{k=1}^{n} (3k-1) x^{6 n} }{(3n)!}
+                     + \frac{1}{\Gamma(2/3) 3^{2/3} } \sum_{n=0}^{\infty} \frac{ \prod_{k=1}^{n} (3k+1) x^{6 n+4} }{(3n+2)!}
 \end{align*}

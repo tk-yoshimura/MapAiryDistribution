@@ -31,6 +31,9 @@ The coefficients of the series expansion are obtained by the recurrence relation
 ![mapairy9](figures/mapairy9.svg)  
 
 Evaluate these equations collectively:  
+near zero |*x*|:  
+![mapairy12](figures/mapairy12.svg)  
+![mapairy13](figures/mapairy13.svg)  
 *x* &rarr; &infin;:  
 ![mapairy10](figures/mapairy10.svg)  
 *x* &rarr; -&infin;:  
