@@ -12,7 +12,8 @@ namespace MapAiryDistribution {
             MultiPrecision<M> xe = x.Convert<M>();
             MultiPrecision<M> x3 = MultiPrecision<M>.Cube(xe);
 
-            MultiPrecision<M> s = 0, u = xe;
+            MultiPrecision<M> s = complementary ? MultiPrecision<M>.Div(1, 3) : MultiPrecision<M>.Div(2, 3);
+            MultiPrecision<M> u = complementary ? -xe : xe;
 
             for (int k = 0, conv_times = 0; k <= max_terms; k++) {
                 (MultiPrecision<M> c0, MultiPrecision<M> c1) = CDFCoefTable(k);
@@ -23,9 +24,7 @@ namespace MapAiryDistribution {
                     conv_times++;
 
                     if (conv_times >= 4) {
-                        return complementary
-                            ? (MultiPrecision<M>.Div(1, 3) - s).Convert<N>()
-                            : (MultiPrecision<M>.Div(2, 3) + s).Convert<N>();
+                        return s.Convert<N>();
                     }
                 }
                 else {
