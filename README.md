@@ -42,6 +42,9 @@ near zero *x*:
 *x* &rarr; -&infin;:  
 ![mapairy11](figures/mapairy11.svg)  
 
+Remarkably, the cumulative probability to x=0 is exactly 2/3:
+![mapairy14](figures/mapairy14.svg)  
+
 ## Statistics
 
 |stat|x|note|
