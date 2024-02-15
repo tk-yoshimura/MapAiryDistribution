@@ -58,7 +58,8 @@ Remarkably, the cumulative probability to *x*=0 is exactly 2/3:
 |0.99-quantile|||
 
 ## Numeric Table
-
+[PDF Precision 150](results/pdf_precision150.csv)  
+[CDF Precision 150](results/cdf_precision150.csv)  
 
 ## Reference
 
