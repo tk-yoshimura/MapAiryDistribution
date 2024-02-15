@@ -38,6 +38,7 @@ namespace MapAiryDistribution {
 
             return MultiPrecision<N>.NaN;
         }
+
         public static MultiPrecision<M> CoefTable(int n) {
             for (int k = coef_table.Count; k <= n; k++) {
                 MultiPrecision<M> c = PDFLimit<N, M>.PlusCoefTable(k) * 2 / (3 - 6 * k);
