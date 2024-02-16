@@ -2,37 +2,42 @@
 using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
-namespace MapAiryDistribution {
-    internal class PDFPlusPadeApproximation {
+namespace MapAiryPadeCoefGeneration {
+    internal class CDFMinusLimitPadeApproximation {
         static void Main_() {
             List<(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [
-                (0, 1, 1 / 4096d)
+                (0, 1, 1 / 4096d),
+                (1, 2, 1 / 4096d),
+                (2, 4, 1 / 4096d),
+                (4, 8, 1 / 4096d),
+                (8, 8.75, 1 / 4096d),
             ];
-
-            for (MultiPrecision<Pow2.N64> xmin = 1; xmin < 1024; xmin *= 2) {
-                ranges.Add((xmin, xmin * 2, xmin / 4096d));
-            }
 
             List<(MultiPrecision<Pow2.N64> x, MultiPrecision<Pow2.N64> y)> expecteds = [];
 
-            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/pdf_precision150_large.bin"))) {
+            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/cdf_precision150_large.bin"))) {
                 while (sr.BaseStream.Position < sr.BaseStream.Length) {
-                    MultiPrecision<Pow2.N64> x = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+                    MultiPrecision<Pow2.N64> x = -sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
                     MultiPrecision<Pow2.N64> y = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+                    _ = sr.ReadMultiPrecision<Pow2.N16>();
 
                     if (x < ranges[0].xmin) {
                         continue;
                     }
 
                     if (x > ranges[^1].xmax) {
-                        break;
+                        continue;
                     }
 
-                    expecteds.Add((x, y));
+                    MultiPrecision<Pow2.N64> u = MultiPrecision<Pow2.N64>.Log2(y);
+
+                    expecteds.Add((x, u));
                 }
             }
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_pdf_precision150.csv")) {
+            expecteds.Reverse();
+
+            using (StreamWriter sw = new("../../../../results_disused/pade_minuslimitcdf_precision150.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax) {
                     Console.WriteLine($"[{xmin}, {xmax}]");
 

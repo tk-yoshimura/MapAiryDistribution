@@ -1,6 +1,7 @@
-﻿using MultiPrecision;
+﻿using MapAiryExpected;
+using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryEvalExpected {
     internal class ExpectedPDFN16 {
         static void Main_() {
             using (BinaryWriter sw = new(File.Open("../../../../results_disused/pdf_precision150_large.bin", FileMode.Create))) {

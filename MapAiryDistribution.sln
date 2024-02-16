@@ -3,7 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapAiryDistribution", "MapAiryDistribution\MapAiryDistribution.csproj", "{C226EE9F-2F44-4D38-A755-89F29E58F04D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryExpected", "MapAiryExpected\MapAiryExpected.csproj", "{6818A962-EB2F-49E7-B0E8-617E98677908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryPadeApprox", "MapAiryPadeApprox\MapAiryPadeApprox.csproj", "{00340E7C-874A-43A4-A491-992EAE8209A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryPadeCoefGeneration", "MapAiryPadeCoefGeneration\MapAiryPadeCoefGeneration.csproj", "{2703E2A5-92C9-4DD5-A86B-EE3D55D214FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6818A962-EB2F-49E7-B0E8-617E98677908} = {6818A962-EB2F-49E7-B0E8-617E98677908}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryEvalExpected", "MapAiryEvalExpected\MapAiryEvalExpected.csproj", "{1A275970-F2EB-4E79-8D1A-E49081385792}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6818A962-EB2F-49E7-B0E8-617E98677908} = {6818A962-EB2F-49E7-B0E8-617E98677908}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryEvalPadeApprox", "MapAiryEvalPadeApprox\MapAiryEvalPadeApprox.csproj", "{9407A799-E7B6-4FE5-A4A0-3E853A85914C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{00340E7C-874A-43A4-A491-992EAE8209A3} = {00340E7C-874A-43A4-A491-992EAE8209A3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +28,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C226EE9F-2F44-4D38-A755-89F29E58F04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C226EE9F-2F44-4D38-A755-89F29E58F04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C226EE9F-2F44-4D38-A755-89F29E58F04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C226EE9F-2F44-4D38-A755-89F29E58F04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6818A962-EB2F-49E7-B0E8-617E98677908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6818A962-EB2F-49E7-B0E8-617E98677908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6818A962-EB2F-49E7-B0E8-617E98677908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6818A962-EB2F-49E7-B0E8-617E98677908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00340E7C-874A-43A4-A491-992EAE8209A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00340E7C-874A-43A4-A491-992EAE8209A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00340E7C-874A-43A4-A491-992EAE8209A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00340E7C-874A-43A4-A491-992EAE8209A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2703E2A5-92C9-4DD5-A86B-EE3D55D214FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2703E2A5-92C9-4DD5-A86B-EE3D55D214FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2703E2A5-92C9-4DD5-A86B-EE3D55D214FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2703E2A5-92C9-4DD5-A86B-EE3D55D214FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A275970-F2EB-4E79-8D1A-E49081385792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A275970-F2EB-4E79-8D1A-E49081385792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A275970-F2EB-4E79-8D1A-E49081385792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A275970-F2EB-4E79-8D1A-E49081385792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9407A799-E7B6-4FE5-A4A0-3E853A85914C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9407A799-E7B6-4FE5-A4A0-3E853A85914C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9407A799-E7B6-4FE5-A4A0-3E853A85914C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9407A799-E7B6-4FE5-A4A0-3E853A85914C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

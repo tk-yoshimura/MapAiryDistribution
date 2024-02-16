@@ -1,6 +1,8 @@
-﻿using MultiPrecision;
+﻿using MapAiryExpected;
+using MapAiryPadeApprox;
+using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryEvalPadeApprox {
     internal class EvalPDFPadeN16 {
         static void Main_() {
             MultiPrecision<Pow2.N16> max_err = "1e-148";

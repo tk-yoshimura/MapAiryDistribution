@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     public class PDFNearZero<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly MultiPrecision<M> g1 = 1 / (MultiPrecision<M>.Gamma(MultiPrecision<M>.Div(1, 3)) * MultiPrecision<M>.Cbrt(3));
         private static readonly MultiPrecision<M> g2 = 1 / (MultiPrecision<M>.Gamma(MultiPrecision<M>.Div(2, 3)) * MultiPrecision<M>.Cbrt(9));

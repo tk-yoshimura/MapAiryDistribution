@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     public static class PDFN16 {
         public static MultiPrecision<Pow2.N16> Value(MultiPrecision<Pow2.N16> x) {
             if (x >= 6.5) {

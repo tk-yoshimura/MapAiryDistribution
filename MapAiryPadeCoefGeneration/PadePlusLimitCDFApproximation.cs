@@ -1,9 +1,10 @@
-﻿using MultiPrecision;
+﻿using MapAiryExpected;
+using MultiPrecision;
 using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
-namespace MapAiryDistribution {
-    internal class PDFPlusLimitPadeApproximation {
+namespace MapAiryPadeCoefGeneration {
+    internal class CDFPlusLimitPadeApproximation {
         static void Main_() {
             List<(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [
                 (0, 1 / 4d, 1 / 4d),
@@ -12,7 +13,7 @@ namespace MapAiryDistribution {
                 (0, 1 / 32d, 1 / 32d)
             ];
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_limitpdf_precision150.csv")) {
+            using (StreamWriter sw = new("../../../../results_disused/pade_limitcdf_precision150.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax) {
                     Console.WriteLine($"[{xmin}, {xmax}]");
 
@@ -24,13 +25,14 @@ namespace MapAiryDistribution {
                         MultiPrecision<Pow2.N64> x = MultiPrecision<Pow2.N64>.Cbrt(u);
 
                         if (x != 0) {
-                            MultiPrecision<Pow2.N64> y = PDFN16.Value(1 / MultiPrecision<Pow2.N16>.Square(x.Convert<Pow2.N16>())).Convert<Pow2.N64>()
-                                / MultiPrecision<Pow2.N64>.Pow(x, 5);
+                            MultiPrecision<Pow2.N64> y = CDFN16.Value(1 / MultiPrecision<Pow2.N16>.Square(x.Convert<Pow2.N16>()), complementary: true)
+                                .Convert<Pow2.N64>()
+                                / MultiPrecision<Pow2.N64>.Pow(x, 3);
 
                             expecteds_range.Add((u, y));
                         }
                         else {
-                            MultiPrecision<Pow2.N64> y = 1 / (4 * MultiPrecision<Pow2.N64>.Sqrt(MultiPrecision<Pow2.N64>.PI));
+                            MultiPrecision<Pow2.N64> y = 1 / (6 * MultiPrecision<Pow2.N64>.Sqrt(MultiPrecision<Pow2.N64>.PI));
 
                             expecteds_range.Add((u, y));
                         }

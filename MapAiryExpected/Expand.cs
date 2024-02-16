@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     internal struct N24 : IConstant {
         public readonly int Value => 24;
     }

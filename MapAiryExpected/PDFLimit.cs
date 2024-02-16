@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     public class PDFLimit<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly List<MultiPrecision<M>> coef_table = [1];
         private static readonly List<MultiPrecision<M>> pluscoef_table = [], minuscoef_table = [];

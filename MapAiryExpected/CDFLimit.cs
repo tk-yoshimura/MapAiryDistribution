@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     public class CDFLimit<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly List<MultiPrecision<M>> coef_table = [];
 

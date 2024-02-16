@@ -1,6 +1,6 @@
 ﻿using MultiPrecision;
 
-namespace MapAiryDistribution {
+namespace MapAiryExpected {
     public class CDFNearZero<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly List<(MultiPrecision<M> c0, MultiPrecision<M> c1)> airycoef_table = [], pdfcoef_table = [], cdfcoef_table = [];
 

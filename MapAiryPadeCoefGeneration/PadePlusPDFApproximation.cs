@@ -2,51 +2,49 @@
 using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
-namespace MapAiryDistribution {
-    internal class CDFPlusLimitPadeApproximation {
+namespace MapAiryPadeCoefGeneration {
+    internal class PDFPlusPadeApproximation {
         static void Main_() {
             List<(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [
-                (0, 1 / 4d, 1 / 4d),
-                (0, 1 / 8d, 1 / 8d),
-                (0, 1 / 16d, 1 / 16d),
-                (0, 1 / 32d, 1 / 32d)
+                (0, 1, 1 / 4096d)
             ];
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_limitcdf_precision150.csv")) {
+            for (MultiPrecision<Pow2.N64> xmin = 1; xmin < 1024; xmin *= 2) {
+                ranges.Add((xmin, xmin * 2, xmin / 4096d));
+            }
+
+            List<(MultiPrecision<Pow2.N64> x, MultiPrecision<Pow2.N64> y)> expecteds = [];
+
+            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/pdf_precision150_large.bin"))) {
+                while (sr.BaseStream.Position < sr.BaseStream.Length) {
+                    MultiPrecision<Pow2.N64> x = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+                    MultiPrecision<Pow2.N64> y = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+
+                    if (x < ranges[0].xmin) {
+                        continue;
+                    }
+
+                    if (x > ranges[^1].xmax) {
+                        break;
+                    }
+
+                    expecteds.Add((x, y));
+                }
+            }
+
+            using (StreamWriter sw = new("../../../../results_disused/pade_pdf_precision150.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax) {
                     Console.WriteLine($"[{xmin}, {xmax}]");
 
-                    List<(MultiPrecision<Pow2.N64> x, MultiPrecision<Pow2.N64> y)> expecteds_range = [];
+                    List<(MultiPrecision<Pow2.N64> x, MultiPrecision<Pow2.N64> y)> expecteds_range
+                        = expecteds.Where(item => item.x >= xmin && item.x <= xmax).ToList();
 
-                    MultiPrecision<Pow2.N64> umin = MultiPrecision<Pow2.N64>.Cube(xmin), umax = MultiPrecision<Pow2.N64>.Cube(xmax);
+                    MultiPrecision<Pow2.N64> y0 = expecteds_range.Where(item => item.x == xmin).First().y;
 
-                    for (MultiPrecision<Pow2.N64> u = umin, h = (umax - umin) / 4096; u <= umax; u += h) {
-                        MultiPrecision<Pow2.N64> x = MultiPrecision<Pow2.N64>.Cbrt(u);
-
-                        if (x != 0) {
-                            MultiPrecision<Pow2.N64> y = CDFN16.Value(1 / MultiPrecision<Pow2.N16>.Square(x.Convert<Pow2.N16>()), complementary: true)
-                                .Convert<Pow2.N64>()
-                                / MultiPrecision<Pow2.N64>.Pow(x, 3);
-
-                            expecteds_range.Add((u, y));
-                        }
-                        else {
-                            MultiPrecision<Pow2.N64> y = 1 / (6 * MultiPrecision<Pow2.N64>.Sqrt(MultiPrecision<Pow2.N64>.PI));
-
-                            expecteds_range.Add((u, y));
-                        }
-                    }
-
-                    Console.WriteLine("expecteds computed");
-
-                    MultiPrecision<Pow2.N64> x0 = expecteds_range.First().x;
-                    MultiPrecision<Pow2.N64> y0 = expecteds_range.First().y;
-                    MultiPrecision<Pow2.N64> xrange = expecteds_range.Last().x - x0;
-
-                    Vector<Pow2.N64> xs = expecteds_range.Select(item => item.x - x0).ToArray();
+                    Vector<Pow2.N64> xs = expecteds_range.Select(item => item.x - xmin).ToArray();
                     Vector<Pow2.N64> ys = expecteds_range.Select(item => item.y).ToArray();
 
-                    for (int coefs = 5; coefs <= 128; coefs++) {
+                    for (int coefs = 5; coefs <= expecteds_range.Count / 2 && coefs <= 128; coefs++) {
                         foreach ((int m, int n) in CurveFittingUtils.EnumeratePadeDegree(coefs, 2)) {
                             PadeFitter<Pow2.N64> pade = new(xs, ys, m, n, intercept: y0);
 
@@ -58,6 +56,10 @@ namespace MapAiryDistribution {
                             Console.WriteLine($"m={m},n={n}");
                             Console.WriteLine($"{max_rateerr:e20}");
 
+                            if (coefs > 8 && max_rateerr > "1e-12") {
+                                return false;
+                            }
+
                             if (coefs > 32 && max_rateerr > "1e-50") {
                                 return false;
                             }
@@ -67,8 +69,9 @@ namespace MapAiryDistribution {
                             }
 
                             if (max_rateerr < "1e-150" &&
-                                !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[..m], 0, xrange) &&
-                                !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[m..], 0, xrange)) {
+                                !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[..m], 0, xmax - xmin) &&
+                                !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[m..], 0, xmax - xmin)) {
+
                                 sw.WriteLine($"x=[{xmin},{xmax}]");
                                 sw.WriteLine($"m={m},n={n}");
                                 sw.WriteLine("numer");

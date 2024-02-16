@@ -2,7 +2,7 @@
 using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
-namespace MapAiryDistribution {
+namespace MapAiryPadeCoefGeneration {
     internal class CDFPlusPadeApproximation {
         static void Main_() {
             List<(MultiPrecision<Pow2.N64> xmin, MultiPrecision<Pow2.N64> xmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [
