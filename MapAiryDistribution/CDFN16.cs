@@ -7,11 +7,11 @@ namespace MapAiryDistribution {
                 return CDFLimit<Pow2.N16, N24>.Value(x, complementary);
             }
 
-            if (x >= -4 && x <= 5) { 
+            if (x >= -4 && x <= 5) {
                 return CDFNearZero<Pow2.N16, N24>.Value(x, complementary);
             }
 
-            if (x >= -5 && x <= 6.25) { 
+            if (x >= -5 && x <= 6.25) {
                 return CDFNearZero<Pow2.N16, Pow2.N32>.Value(x, complementary);
             }
 
