@@ -52,11 +52,24 @@ Remarkably, the cumulative probability to *x*=0 is exactly 2/3:
 |----|----|----|
 |mean|0||
 |mode|||
+|median|-0.2734763098101749523722883574736...||
 |variance|N/A|undefined|
+|0.01-quantile|||
+|0.05-quantile||
+|0.1-quantile|||
+|0.25-quantile|||
 |0.75-quantile|||
 |0.9-quantile|||
 |0.95-quantile||
 |0.99-quantile|||
+
+## Property of Tail
+
+The plus *x* side is a fat-tail.  
+![plus tail approx](figures/mapairy_pdf_loglog_plimit.svg)
+
+The minus *x* side poly exponential decays.  
+![minus tail approx](figures/mapairy_pdf_loglog_nlimit.svg)
 
 ## Numeric Table
 [PDF Precision 150](results/pdf_precision150.csv)  
