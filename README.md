@@ -74,7 +74,7 @@ The minus *x* side poly exponential decays.
 ## Numeric Table
 [PDF Precision 150](results/pdf_precision150.csv)  
 [CDF Precision 150](results/cdf_precision150.csv)  
-[Quantile Precision 142](results/cdf_precision142.csv)  
+[Quantile Precision 142](results/quantile_precision142.csv)  
 
 ## Reference
 
