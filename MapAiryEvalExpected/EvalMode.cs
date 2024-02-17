@@ -2,15 +2,10 @@
 using MultiPrecision;
 using MultiPrecisionRootFinding;
 using MultiPresicionDifferentiate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MapAiryEvalExpected {
     internal class SearchMode {
-        static void Main() {
+        static void Main_() {
             using StreamWriter sw = new("../../../../results/mode_precision75.csv");
 
             sw.WriteLine("stats,x,pdf");
