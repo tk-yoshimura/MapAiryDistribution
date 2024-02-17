@@ -54,14 +54,14 @@ Remarkably, the cumulative probability to *x*=0 is exactly 2/3:
 |mode|||
 |median|-0.2734763098101749523722883574736...||
 |variance|N/A|undefined|
-|0.01-quantile|||
-|0.05-quantile||
-|0.1-quantile|||
-|0.25-quantile|||
-|0.75-quantile|||
-|0.9-quantile|||
-|0.95-quantile||
-|0.99-quantile|||
+|0.01-quantile|-0.1286328156263140898164029409856...||
+|0.05-quantile|-0.1034724247045514552350828430407...||
+|0.1-quantile |-0.8895329338157856119554196809140...||
+|0.25-quantile|-0.6230345400974589058685476106950...||
+|0.75-quantile|1.8373125610184220685083687477262...||
+|0.9-quantile |8.1875041531854880921677466429954...||
+|0.95-quantile|14.592191256427298248407489815973...||
+|0.99-quantile|44.468845263338009491209545700074...||
 
 ## Property of Tail
 
@@ -74,6 +74,7 @@ The minus *x* side poly exponential decays.
 ## Numeric Table
 [PDF Precision 150](results/pdf_precision150.csv)  
 [CDF Precision 150](results/cdf_precision150.csv)  
+[Quantile Precision 142](results/cdf_precision142.csv)  
 
 ## Reference
 

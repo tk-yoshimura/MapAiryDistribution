@@ -8,10 +8,6 @@ namespace MapAiryPadeApprox {
         public static MultiPrecision<N> Pade(MultiPrecision<N> x, ReadOnlyCollection<(MultiPrecision<N> c, MultiPrecision<N> d)> table) {
             (MultiPrecision<N> sc, MultiPrecision<N> sd) = table[^1];
 
-#if DEBUG
-            Trace.Assert(x >= 0, $"must be positive! {x}");
-#endif
-
             for (int i = table.Count - 2; i >= 0; i--) {
                 sc = sc * x + table[i].c;
                 sd = sd * x + table[i].d;
