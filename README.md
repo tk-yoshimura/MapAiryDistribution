@@ -51,7 +51,7 @@ Remarkably, the cumulative probability to *x*=0 is exactly 2/3:
 |stat|x|note|
 |----|----|----|
 |mean|0||
-|mode|||
+|mode  |-0.4432284977460014720866292801601...||
 |median|-0.2734763098101749523722883574736...||
 |variance|N/A|undefined|
 |0.01-quantile|-0.1286328156263140898164029409856...||
