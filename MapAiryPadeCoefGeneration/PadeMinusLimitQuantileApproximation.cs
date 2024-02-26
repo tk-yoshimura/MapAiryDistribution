@@ -16,7 +16,7 @@ namespace MapAiryPadeCoefGeneration {
 
             List<(MultiPrecision<Pow2.N64> p, MultiPrecision<Pow2.N64> y)> expecteds = [];
 
-            using (StreamReader sr = new("D:/workspace/_GitProjects/MapAiryDistribution/results_disused/quantile_precision148.csv")) {
+            using (StreamReader sr = new("../../../../results_disused/quantile_precision148.csv")) {
                 sr.ReadLine();
 
                 while (!sr.EndOfStream) {
@@ -39,7 +39,7 @@ namespace MapAiryPadeCoefGeneration {
                 }
             }
 
-            using (StreamWriter sw = new("D:/workspace/_GitProjects/MapAiryDistribution/results_disused/pade_quantile_limitminus_precision145.csv")) {
+            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_limitminus_precision145.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax) {
                     Console.WriteLine($"[{pmin}, {pmax}]");
 
