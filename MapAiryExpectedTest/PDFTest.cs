@@ -40,7 +40,6 @@ namespace MapAiryExpectedTest {
             Assert.IsTrue(PDFN16.Value(-6.40625) == PDFNearZero<Pow2.N16, N48>.Value(-6.40625));
             Assert.IsTrue(PDFN16.Value(-6.40625) == PDFNearZero<Pow2.N16, Pow2.N32>.Value(-6.40625));
             Assert.IsTrue(PDFN16.Value(-6.40625) == PDFLimit<Pow2.N16, N48>.MinusValue(-6.40625));
-
         }
     }
 }
