@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapAiryEvalPadeApprox", "Ma
 		{00340E7C-874A-43A4-A491-992EAE8209A3} = {00340E7C-874A-43A4-A491-992EAE8209A3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryExpectedTest", "MapAiryExpectedTest\MapAiryExpectedTest.csproj", "{F0EF8876-6650-4B60-9058-8DD4C81FA7E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapAiryExpectedTest", "MapAiryExpectedTest\MapAiryExpectedTest.csproj", "{F0EF8876-6650-4B60-9058-8DD4C81FA7E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapAiryCDFMinusLimitNumericIntegration", "MapAiryCDFMinusLimitNumericIntegration\MapAiryCDFMinusLimitNumericIntegration.csproj", "{4FC162C8-0A5A-439F-863A-AFECB1BEE3C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{F0EF8876-6650-4B60-9058-8DD4C81FA7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0EF8876-6650-4B60-9058-8DD4C81FA7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0EF8876-6650-4B60-9058-8DD4C81FA7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FC162C8-0A5A-439F-863A-AFECB1BEE3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FC162C8-0A5A-439F-863A-AFECB1BEE3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FC162C8-0A5A-439F-863A-AFECB1BEE3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FC162C8-0A5A-439F-863A-AFECB1BEE3C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
