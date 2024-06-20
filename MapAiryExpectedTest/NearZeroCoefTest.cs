@@ -66,7 +66,7 @@ namespace MapAiryExpectedTest {
                 Fraction f = NearZeroCoef.CDFExpTerm(i);
 
                 Console.WriteLine($"{i}\t{f}");
-            }            
+            }
 
             for (int i = 0; i < 60; i++) {
                 MultiPrecision<Pow2.N16> f = NearZeroCoef.CDFExpTerm(i).ToMultiPrecision<Pow2.N16>();

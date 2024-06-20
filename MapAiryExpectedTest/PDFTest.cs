@@ -24,6 +24,7 @@ namespace MapAiryExpectedTest {
                 Console.WriteLine($"N24\t{x}\t {PDFNearZero<Pow2.N16, N24>.Value(x)}");
                 Console.WriteLine($"N32\t{x}\t {PDFNearZero<Pow2.N16, Pow2.N32>.Value(x)}");
                 Console.WriteLine($"N48\t{x}\t {PDFNearZero<Pow2.N16, N48>.Value(x)}");
+                Console.WriteLine("");
             }
         }
 

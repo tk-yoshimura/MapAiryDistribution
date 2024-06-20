@@ -10,6 +10,9 @@ namespace MapAiryExpected {
         };
         private static readonly Dictionary<long, Fraction> cdf_exp_terms = [];
 
+        private static readonly Dictionary<long, List<Fraction>> pdf_term_fracs = [];
+        private static readonly Dictionary<long, List<Fraction>> cdf_term_fracs = [];
+
         public static Fraction PDFExpTerm(long i) {
             ArgumentOutOfRangeException.ThrowIfNegative(i);
 
@@ -54,11 +57,18 @@ namespace MapAiryExpected {
             for (long j = i % 3; j <= i; j += 3) {
                 Fraction g = PDFExpTerm(j);
 
-                for (long k = 1; k <= (i - j) / 3; k++) {
-                    g *= new Fraction(2, 3) / k;
+                if (!pdf_term_fracs.TryGetValue(j, out List<Fraction>? table)) {
+                    pdf_term_fracs[j] = table = [g];
                 }
 
-                f += g;
+                long m = (i - j) / 3;
+
+                for (long k = table.Count; k <= m; k++) {
+                    g = table[^1] * new Fraction(2, checked(3 * k));
+                    table.Add(g);
+                }
+
+                f += table[checked((int)m)];
             }
 
 
@@ -92,11 +102,18 @@ namespace MapAiryExpected {
             for (long j = i % 3; j <= i; j += 3) {
                 Fraction g = CDFTerm(j);
 
-                for (long k = 1; k <= (i - j) / 3; k++) {
-                    g *= new Fraction(-2, 3) / k;
+                if (!cdf_term_fracs.TryGetValue(j, out List<Fraction>? table)) {
+                    cdf_term_fracs[j] = table = [g];
                 }
 
-                f += g;
+                long m = (i - j) / 3;
+
+                for (long k = table.Count; k <= m; k++) {
+                    g = table[^1] * new Fraction(-2, checked(3 * k));
+                    table.Add(g);
+                }
+
+                f += table[checked((int)m)];
             }
 
 
@@ -106,7 +123,7 @@ namespace MapAiryExpected {
         }
     }
 
-    public static class NearZeroCoef<N> where N: struct, IConstant {
+    public static class NearZeroCoef<N> where N : struct, IConstant {
         private static readonly Dictionary<long, MultiPrecision<N>> pdf_terms = [];
         private static readonly Dictionary<long, MultiPrecision<N>> cdf_terms = [];
 
@@ -114,6 +131,9 @@ namespace MapAiryExpected {
             { 0, 1 }, { 1, -1 }, { 2, 0 }, { 3, 1 }, { 4, -MultiPrecision<N>.Point5 }, { 5, 0 }
         };
         private static readonly Dictionary<long, MultiPrecision<N>> cdf_exp_terms = [];
+
+        private static readonly Dictionary<long, List<MultiPrecision<N>>> pdf_term_fracs = [];
+        private static readonly Dictionary<long, List<MultiPrecision<N>>> cdf_term_fracs = [];
 
         private static readonly MultiPrecision<N> c2d3 = MultiPrecision<N>.Div(2, 3);
 
@@ -161,11 +181,18 @@ namespace MapAiryExpected {
             for (long j = i % 3; j <= i; j += 3) {
                 MultiPrecision<N> g = PDFExpTerm(j);
 
-                for (long k = 1; k <= (i - j) / 3; k++) {
-                    g *= c2d3 / k;
+                if (!pdf_term_fracs.TryGetValue(j, out List<MultiPrecision<N>>? table)) {
+                    pdf_term_fracs[j] = table = [g];
                 }
 
-                f += g;
+                long m = (i - j) / 3;
+
+                for (long k = table.Count; k <= m; k++) {
+                    g = table[^1] * MultiPrecision<N>.Div(2, checked(3 * k));
+                    table.Add(g);
+                }
+
+                f += table[checked((int)m)];
             }
 
 
@@ -199,11 +226,18 @@ namespace MapAiryExpected {
             for (long j = i % 3; j <= i; j += 3) {
                 MultiPrecision<N> g = CDFTerm(j);
 
-                for (long k = 1; k <= (i - j) / 3; k++) {
-                    g *= -c2d3 / k;
+                if (!cdf_term_fracs.TryGetValue(j, out List<MultiPrecision<N>>? table)) {
+                    cdf_term_fracs[j] = table = [g];
                 }
 
-                f += g;
+                long m = (i - j) / 3;
+
+                for (long k = table.Count; k <= m; k++) {
+                    g = table[^1] * MultiPrecision<N>.Div(-2, checked(3 * k));
+                    table.Add(g);
+                }
+
+                f += table[checked((int)m)];
             }
 
 

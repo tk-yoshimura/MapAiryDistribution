@@ -62,7 +62,7 @@ namespace MapAiryExpected {
         }
     }
 
-    public static class MinusLimitCoef<N> where N: struct, IConstant {
+    public static class MinusLimitCoef<N> where N : struct, IConstant {
         private static readonly Dictionary<long, MultiPrecision<N>> pdf_terms = [], pdf_prod_terms = new() { { 0, 1 } };
         private static readonly Dictionary<long, MultiPrecision<N>> cdf_terms = [];
 

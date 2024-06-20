@@ -3,7 +3,7 @@
 namespace MapAiryExpected {
     public class PDFPlusLimit<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly List<MultiPrecision<M>> coef_table = [];
-        
+
         public static MultiPrecision<N> Value(MultiPrecision<N> x, int max_terms = 2048) {
             ArgumentOutOfRangeException.ThrowIfNegative(x);
 
