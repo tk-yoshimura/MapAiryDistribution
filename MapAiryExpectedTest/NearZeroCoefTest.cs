@@ -19,6 +19,14 @@ namespace MapAiryExpectedTest {
 
                 Console.WriteLine($"{i}\t{f}");
             }
+
+            for (int i = 0; i < 60; i++) {
+                MultiPrecision<Pow2.N16> f = NearZeroCoef.PDFExpTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = NearZeroCoef<N24>.PDFExpTerm(i).Convert<Pow2.N16>();
+
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
+            }
         }
 
         [TestMethod]
@@ -35,6 +43,14 @@ namespace MapAiryExpectedTest {
 
                 Console.WriteLine($"{i}\t{f}");
             }
+
+            for (int i = 0; i < 60; i++) {
+                MultiPrecision<Pow2.N16> f = NearZeroCoef.PDFTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = NearZeroCoef<N24>.PDFTerm(i).Convert<Pow2.N16>();
+
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
+            }
         }
 
         [TestMethod]
@@ -50,6 +66,14 @@ namespace MapAiryExpectedTest {
                 Fraction f = NearZeroCoef.CDFExpTerm(i);
 
                 Console.WriteLine($"{i}\t{f}");
+            }            
+
+            for (int i = 0; i < 60; i++) {
+                MultiPrecision<Pow2.N16> f = NearZeroCoef.CDFExpTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = NearZeroCoef<N24>.CDFExpTerm(i).Convert<Pow2.N16>();
+
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
             }
         }
 
@@ -66,6 +90,14 @@ namespace MapAiryExpectedTest {
                 Fraction f = NearZeroCoef.CDFTerm(i);
 
                 Console.WriteLine($"{i}\t{f}");
+            }
+
+            for (int i = 0; i < 60; i++) {
+                MultiPrecision<Pow2.N16> f = NearZeroCoef.CDFTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = NearZeroCoef<N24>.CDFTerm(i).Convert<Pow2.N16>();
+
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
             }
         }
     }

@@ -5,15 +5,44 @@ namespace MapAiryExpectedTest {
     [TestClass]
     public class CDFTest {
         [TestMethod]
+        public void PlusLimitTest() {
+            for (double x = 32; x >= 4; x -= 0.125) {
+                Console.WriteLine($"{x}\t {CDFPlusLimit<Pow2.N16, N24>.Value(x, complementary: true)}");
+            }
+        }
+
+        [TestMethod]
+        public void MinusLimitTest() {
+            for (double x = -32; x <= -4; x += 0.125) {
+                Console.WriteLine($"{x}\t {CDFMinusLimit<Pow2.N16, N24>.Value(x)}");
+            }
+        }
+
+        [TestMethod]
+        public void NearZeroTest() {
+            for (double x = -7; x < 0; x += 0.125) {
+                Console.WriteLine($"N24\t{x}\t {CDFNearZero<Pow2.N16, N24>.Value(x)}");
+                Console.WriteLine($"N32\t{x}\t {CDFNearZero<Pow2.N16, Pow2.N32>.Value(x)}");
+                Console.WriteLine($"N48\t{x}\t {CDFNearZero<Pow2.N16, N48>.Value(x)}");
+            }
+
+            for (double x = 0; x <= 7; x += 0.125) {
+                Console.WriteLine($"N24\t{x}\t {CDFNearZero<Pow2.N16, N24>.Value(x, complementary: true)}");
+                Console.WriteLine($"N32\t{x}\t {CDFNearZero<Pow2.N16, Pow2.N32>.Value(x, complementary: true)}");
+                Console.WriteLine($"N48\t{x}\t {CDFNearZero<Pow2.N16, N48>.Value(x, complementary: true)}");
+            }
+        }
+
+        [TestMethod]
         public void Border6p625Test() {
             Assert.IsTrue(
-                CDFLimit<Pow2.N16, N24>.Value(6.5, complementary: true) ==
+                CDFPlusLimit<Pow2.N16, N24>.Value(6.5, complementary: true) ==
                 CDFNearZero<Pow2.N16, N48>.Value(6.5, complementary: true)
             );
 
             Assert.IsTrue(
                 CDFN16.Value(6.5, complementary: true) ==
-                CDFLimit<Pow2.N16, N24>.Value(6.5, complementary: true)
+                CDFPlusLimit<Pow2.N16, N24>.Value(6.5, complementary: true)
             );
 
             Assert.IsTrue(

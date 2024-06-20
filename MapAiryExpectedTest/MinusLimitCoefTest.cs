@@ -28,6 +28,14 @@ namespace MapAiryExpectedTest {
 
                 Console.WriteLine($"{i}\t{f}");
             }
+
+            for (int i = 0; i < 60; i++) {
+                MultiPrecision<Pow2.N16> f = MinusLimitCoef.PDFTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = MinusLimitCoef<N24>.PDFTerm(i).Convert<Pow2.N16>();
+
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
+            }
         }
 
         [TestMethod]
@@ -38,20 +46,31 @@ namespace MapAiryExpectedTest {
                 Console.WriteLine($"{i}\t{f}");
             }
 
-            Console.WriteLine($"---------");
-
-            BigInteger g = 1;
             for (int i = 0; i < 60; i++) {
-                Fraction f = MinusLimitCoef.CDFTerm(i);
+                MultiPrecision<Pow2.N16> f = MinusLimitCoef.CDFTerm(i).ToMultiPrecision<Pow2.N16>();
+                MultiPrecision<Pow2.N16> g = MinusLimitCoef<N24>.CDFTerm(i).Convert<Pow2.N16>();
 
-                Console.WriteLine($"{i}\t{f * g}");
+                MultiPrecision<Pow2.N16>.NearlyEqualBits(f, g, ignore_bits: 1);
+                Console.WriteLine($"{i}\t{g}");
+            }
 
-                if (i == 32) {
-                    Assert.AreEqual(BigInteger.One, (f * g).Denom);
-                    Assert.AreEqual(BigInteger.Parse("384515714305538729765212659740818276597535036878622352456379456831626348453854076990681487028680192702900941949462890625"), (f * g).Numer);
+            {
+
+                Console.WriteLine($"---------");
+
+                BigInteger g = 1;
+                for (int i = 0; i < 60; i++) {
+                    Fraction f = MinusLimitCoef.CDFTerm(i);
+
+                    Console.WriteLine($"{i}\t{f * g}");
+
+                    if (i == 32) {
+                        Assert.AreEqual(BigInteger.One, (f * g).Denom);
+                        Assert.AreEqual(BigInteger.Parse("384515714305538729765212659740818276597535036878622352456379456831626348453854076990681487028680192702900941949462890625"), (f * g).Numer);
+                    }
+
+                    g *= 48 * (i + 1);
                 }
-
-                g *= 48 * (i + 1);
             }
         }
     }

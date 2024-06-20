@@ -1,8 +1,8 @@
 ﻿using MultiPrecision;
 
 namespace MapAiryExpected {
-    public static class MinusLimitCoef {
-        private static readonly Dictionary<long, Fraction> pdf_terms = [], pdf_prod_terms = new() { { 0, 1 } };
+    public static class PlusLimitCoef {
+        private static readonly Dictionary<long, Fraction> pdf_terms = new() { { 0, 0 } }, pdf_prod_terms = new() { { 0, 1 } };
         private static readonly Dictionary<long, Fraction> cdf_terms = [];
 
         private static Fraction PDFProd(long i) {
@@ -26,7 +26,7 @@ namespace MapAiryExpected {
                 return value;
             }
 
-            Fraction f = PDFProd(i) / checked(1 - 6 * i);
+            Fraction f = PDFProd(i) * new Fraction(6 * i, checked(1 - 6 * i));
 
             pdf_terms[i] = f;
 
@@ -40,21 +40,7 @@ namespace MapAiryExpected {
                 return value;
             }
 
-            Fraction f = 0;
-            for (long j = 0; j <= i; j++) {
-                Fraction g = PDFTerm(j);
-
-                for (long k = 1; k <= i - j; k++) {
-                    g *= new Fraction(6 * j + 6 * k - 3, 8);
-                }
-
-                if ((i - j) % 2 == 0) {
-                    f += g;
-                }
-                else {
-                    f -= g;
-                }
-            }
+            Fraction f = PDFTerm(i) * 2 / (6 * i - 3);
 
             cdf_terms[i] = f;
 
@@ -62,8 +48,8 @@ namespace MapAiryExpected {
         }
     }
 
-    public static class MinusLimitCoef<N> where N: struct, IConstant {
-        private static readonly Dictionary<long, MultiPrecision<N>> pdf_terms = [], pdf_prod_terms = new() { { 0, 1 } };
+    public static class PlusLimitCoef<N> where N: struct, IConstant {
+        private static readonly Dictionary<long, MultiPrecision<N>> pdf_terms = new() { { 0, 0 } }, pdf_prod_terms = new() { { 0, 1 } };
         private static readonly Dictionary<long, MultiPrecision<N>> cdf_terms = [];
 
         private static MultiPrecision<N> PDFProd(long i) {
@@ -87,7 +73,7 @@ namespace MapAiryExpected {
                 return value;
             }
 
-            MultiPrecision<N> f = PDFProd(i) / checked(1 - 6 * i);
+            MultiPrecision<N> f = PDFProd(i) * MultiPrecision<N>.Div(6 * i, checked(1 - 6 * i));
 
             pdf_terms[i] = f;
 
@@ -101,21 +87,7 @@ namespace MapAiryExpected {
                 return value;
             }
 
-            MultiPrecision<N> f = 0;
-            for (long j = 0; j <= i; j++) {
-                MultiPrecision<N> g = PDFTerm(j);
-
-                for (long k = 1; k <= i - j; k++) {
-                    g *= MultiPrecision<N>.Div(6 * j + 6 * k - 3, 8);
-                }
-
-                if ((i - j) % 2 == 0) {
-                    f += g;
-                }
-                else {
-                    f -= g;
-                }
-            }
+            MultiPrecision<N> f = PDFTerm(i) * 2 / (6 * i - 3);
 
             cdf_terms[i] = f;
 

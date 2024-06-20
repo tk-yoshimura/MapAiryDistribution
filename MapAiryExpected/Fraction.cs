@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using MultiPrecision;
+using System.Diagnostics;
 using System.Numerics;
 
 namespace MapAiryExpected {
@@ -107,6 +108,12 @@ namespace MapAiryExpected {
 
         public override bool Equals(object? obj) {
             return obj is not null && obj is Fraction v && Numer == v.Numer && Denom == v.Denom;
+        }
+
+        public MultiPrecision<N> ToMultiPrecision<N>() where N : struct, IConstant {
+            MultiPrecision<Plus1<N>> n = $"{Numer}", d = $"{Denom}";
+
+            return MultiPrecisionUtil.Convert<N, Plus1<N>>(n / d);
         }
     }
 }
