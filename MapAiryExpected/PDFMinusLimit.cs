@@ -4,7 +4,7 @@ namespace MapAiryExpected {
     public class PDFMinusLimit<N, M> where N : struct, IConstant where M : struct, IConstant {
         private static readonly List<MultiPrecision<M>> coef_table = [];
 
-        public static MultiPrecision<N> Value(MultiPrecision<N> x, int max_terms = 2048) {
+        public static MultiPrecision<N> Value(MultiPrecision<N> x, bool exp_scale = true, int max_terms = 2048) {
             ArgumentOutOfRangeException.ThrowIfGreaterThan(x, 0);
 
             MultiPrecision<M> xe = MultiPrecision<N>.Abs(x).Convert<M>();
@@ -21,9 +21,14 @@ namespace MapAiryExpected {
                     conv_times++;
 
                     if (conv_times >= 4) {
-                        s *= MultiPrecision<M>.Exp(-4 * MultiPrecision<M>.Cube(xe) / 3);
+                        if (exp_scale) {
+                            s *= MultiPrecision<M>.Exp(-4 * MultiPrecision<M>.Cube(xe) / 3);
 
-                        return s.Convert<N>();
+                            return s.Convert<N>();
+                        }
+                        else { 
+                            return s.Convert<N>();
+                        }
                     }
                 }
                 else {
