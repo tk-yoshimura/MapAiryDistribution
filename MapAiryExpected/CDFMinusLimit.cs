@@ -30,7 +30,7 @@ namespace MapAiryExpected {
 
                             return s.Convert<N>();
                         }
-                        else { 
+                        else {
                             if (complementary) {
                                 throw new ArgumentException("invalid complementary");
                             }

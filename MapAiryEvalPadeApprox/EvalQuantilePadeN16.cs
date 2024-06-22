@@ -1,5 +1,4 @@
-﻿using MapAiryExpected;
-using MapAiryPadeApprox;
+﻿using MapAiryPadeApprox;
 using MultiPrecision;
 
 namespace MapAiryEvalPadeApprox {

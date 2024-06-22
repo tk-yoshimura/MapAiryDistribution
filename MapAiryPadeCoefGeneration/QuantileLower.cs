@@ -3,8 +3,8 @@ using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
 namespace MapAiryPadeCoefGeneration {
-    internal class PadePlusLimitQuantileApproximation {
-        static void Main() {
+    internal class QuantileLower {
+        static void Main_() {
             List<(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [];
 
             for (MultiPrecision<Pow2.N64> pmin = 2; pmin < 8; pmin *= 2) {
@@ -66,16 +66,44 @@ namespace MapAiryPadeCoefGeneration {
 
                             Console.WriteLine($"mcount: {param.Count(item => item.val.Sign != Sign.Plus)}");
 
-                            if (coefs > 8 && max_rateerr > "1e-12") {
+                            if (coefs > 8 && max_rateerr > "1e-15") {
                                 return false;
                             }
 
-                            if (coefs > 32 && max_rateerr > "1e-45") {
+                            if (coefs > 16 && max_rateerr > "1e-30") {
                                 return false;
+                            }
+
+                            if (coefs > 32 && max_rateerr > "1e-60") {
+                                return false;
+                            }
+
+                            if (max_rateerr > "1e-45") {
+                                coefs += 16;
+                                break;
+                            }
+
+                            if (max_rateerr > "1e-95") {
+                                coefs += 8;
+                                break;
+                            }
+
+                            if (max_rateerr > "1e-130") {
+                                coefs += 4;
+                                break;
+                            }
+
+                            if (max_rateerr > "1e-135") {
+                                coefs += 2;
+                                break;
                             }
 
                             if (max_rateerr > "1e-140") {
                                 break;
+                            }
+
+                            if (max_rateerr < "1e-160") {
+                                return false;
                             }
 
                             if (max_rateerr < "1e-145" &&

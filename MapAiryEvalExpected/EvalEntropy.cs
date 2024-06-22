@@ -4,7 +4,7 @@ using MultiPrecisionIntegrate;
 
 namespace MapAiryEvalExpected {
     internal class EvalEntropy {
-        static void Main() {
+        static void Main_() {
             using StreamWriter sw = new("../../../../results/entropy_precision60.csv");
 
             static MultiPrecision<Pow2.N16> info(MultiPrecision<Pow2.N16> x) {
@@ -18,14 +18,14 @@ namespace MapAiryEvalExpected {
             };
 
             (MultiPrecision<Pow2.N16> nvalue, MultiPrecision<Pow2.N16> nerror) =
-                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, -12, 0, 
+                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, -12, 0,
                 1e-120, GaussKronrodOrder.G32K65, 32
             );
 
             Console.WriteLine($"{nvalue}\n{nerror:e20}");
 
             (MultiPrecision<Pow2.N16> pvalue, MultiPrecision<Pow2.N16> perror) =
-                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, 0, MultiPrecision<Pow2.N16>.PositiveInfinity, 
+                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, 0, MultiPrecision<Pow2.N16>.PositiveInfinity,
                 1e-120, GaussKronrodOrder.G32K65, 128
             );
 

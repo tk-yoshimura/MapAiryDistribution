@@ -26,7 +26,7 @@ namespace MapAiryExpected {
 
                             return s.Convert<N>();
                         }
-                        else { 
+                        else {
                             return s.Convert<N>();
                         }
                     }
