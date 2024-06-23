@@ -13,9 +13,7 @@ namespace MapAiryPadeApprox {
                 sd = sd * x + table[i].d;
             }
 
-#if DEBUG
-            Trace.Assert(sd >= 0.5, $"pade denom digits loss! {x}");
-#endif
+            Debug.Assert(sd >= 0.5, $"pade denom digits loss! {x}");
 
             return sc / sd;
         }

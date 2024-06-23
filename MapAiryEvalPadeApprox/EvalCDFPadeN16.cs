@@ -4,20 +4,16 @@ using MultiPrecision;
 
 namespace MapAiryEvalPadeApprox {
     internal class EvalCDFPadeN16 {
-        static void Main_() {
-            MultiPrecision<Pow2.N16> max_err = "1e-148";
+        static void Main() {
+            MultiPrecision<Pow2.N16> max_err = "1e-151";
 
             using (StreamWriter sw = new("../../../../results_disused/cdf_pade_eval.csv")) {
                 sw.WriteLine("x,cdferror,ccdferror");
 
                 sw.WriteLine("x,cdf(x),cdf_pade(x),err");
 
-                for (double x0 = -16; x0 < -1; x0 /= 2) {
+                for (double x0 = -256; x0 < -1; x0 /= 2) {
                     for (double x = x0; x < x0 / 2; x += -x0 / 512) {
-                        if (x < -8.75) {
-                            continue;
-                        }
-
                         MultiPrecision<Pow2.N16> cdf_expected = CDFN16.Value(x);
                         MultiPrecision<Pow2.N16> ccdf_expected = CDFN16.Value(x, complementary: true);
 

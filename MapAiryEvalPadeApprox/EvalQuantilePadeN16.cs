@@ -3,7 +3,7 @@ using MultiPrecision;
 
 namespace MapAiryEvalPadeApprox {
     internal class EvalQuantilePadeN16 {
-        static void Main() {
+        static void Main_() {
             MultiPrecision<Pow2.N16> max_err = "1e-142";
 
             using (StreamWriter sw = new("../../../../results_disused/quantile_pade_eval.csv")) {
