@@ -3,7 +3,7 @@ using MultiPrecision;
 
 namespace MapAiryEvalExpected {
     internal class ExpectedPDFN16 {
-        static void Main() {
+        static void Main_() {
             using (BinaryWriter sw = new(File.Open("../../../../results_disused/pdf_limit_precision150.bin", FileMode.Create))) {
 
                 for (MultiPrecision<Pow2.N16> x0 = 256; x0 > 8; x0 /= 2) {
