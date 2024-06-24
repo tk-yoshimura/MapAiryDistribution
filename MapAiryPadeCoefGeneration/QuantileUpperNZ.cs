@@ -3,16 +3,11 @@ using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
 namespace MapAiryPadeCoefGeneration {
-    internal class QuantileUpper {
-        static void Main_() {
-            List<(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [];
-
-            for (MultiPrecision<Pow2.N64> pmin = 2; pmin < 8; pmin *= 2) {
-                ranges.Add((pmin, pmin * 2, pmin / 256));
-            }
-            for (MultiPrecision<Pow2.N64> pmin = 8; pmin < 16; pmin *= 2) {
-                ranges.Add((pmin, pmin * 2, pmin / 128));
-            }
+    internal class QuantileUpperNZ {
+        static void Main() {
+            List<(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [
+                (1, 2, 1d / 256)
+            ];
 
             List<(MultiPrecision<Pow2.N64> p, MultiPrecision<Pow2.N64> y)> expecteds = [];
 
@@ -25,7 +20,7 @@ namespace MapAiryPadeCoefGeneration {
                 }
             }
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_upper_precision150_scaled.csv")) {
+            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_upper_precision150_scaled_nz.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax) {
                     Console.WriteLine($"[{pmin}, {pmax}]");
 
@@ -37,6 +32,10 @@ namespace MapAiryPadeCoefGeneration {
                     Vector<Pow2.N64> xs = expecteds_range.Select(item => item.p - pmin).ToArray();
                     Vector<Pow2.N64> ys = expecteds_range.Select(item => item.y).ToArray();
 
+                    bool contain_root = ys.Any(v => v.val.Sign == Sign.Plus) && ys.Any(v => v.val.Sign == Sign.Minus);
+
+                    Console.WriteLine($"contain_root={contain_root}");
+
                     MultiPrecision<Pow2.N64> y0 = ys[0];
 
                     for (int coefs = 5; coefs <= expecteds_range.Count / 2 && coefs <= 128; coefs++) {
@@ -45,7 +44,7 @@ namespace MapAiryPadeCoefGeneration {
 
                             Vector<Pow2.N64> param = pade.ExecuteFitting();
 
-                            MultiPrecision<Pow2.N64> max_rateerr = CurveFittingUtils.MaxRelativeError(ys, pade.FittingValue(xs, param));
+                            MultiPrecision<Pow2.N64> max_rateerr = CurveFittingUtils.MaxAbsoluteError(ys, pade.FittingValue(xs, param));
 
                             Console.WriteLine($"m={m},n={n}");
                             Console.WriteLine($"{max_rateerr:e20}");
@@ -89,11 +88,11 @@ namespace MapAiryPadeCoefGeneration {
                             }
 
                             if (max_rateerr < "1e-150" &&
-                                !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[..m], 0, pmax - pmin) &&
                                 !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[m..], 0, pmax - pmin)) {
 
                                 sw.WriteLine($"p=[{pmin},{pmax}]");
                                 sw.WriteLine($"m={m},n={n}");
+                                sw.WriteLine($"contain_root={contain_root}");
                                 sw.WriteLine($"expecteds {expecteds_range.Count} samples");
                                 sw.WriteLine($"sample rate {(double)expecteds_range.Count / (param.Dim - 1)}");
 
@@ -111,7 +110,7 @@ namespace MapAiryPadeCoefGeneration {
                                     sw.WriteLine($"(\"{numer:e155}\", \"{denom:e155}\"),");
                                 }
 
-                                sw.WriteLine("relative err");
+                                sw.WriteLine("absolute err");
                                 sw.WriteLine($"{max_rateerr:e20}");
                                 sw.Flush();
 
