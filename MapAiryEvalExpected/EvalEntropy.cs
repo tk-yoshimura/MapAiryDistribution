@@ -4,8 +4,8 @@ using MultiPrecisionIntegrate;
 
 namespace MapAiryEvalExpected {
     internal class EvalEntropy {
-        static void Main_() {
-            using StreamWriter sw = new("../../../../results/entropy_precision60.csv");
+        static void Main() {
+            using StreamWriter sw = new("../../../../results/entropy_precision120.csv");
 
             static MultiPrecision<Pow2.N16> info(MultiPrecision<Pow2.N16> x) {
                 MultiPrecision<Pow2.N16> px = PDFPadeN16.Value(x);
@@ -17,16 +17,16 @@ namespace MapAiryEvalExpected {
                 return -px * MultiPrecision<Pow2.N16>.Log(px);
             };
 
-            (MultiPrecision<Pow2.N16> nvalue, MultiPrecision<Pow2.N16> nerror) =
-                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, -12, 0,
-                1e-120, GaussKronrodOrder.G32K65, 32
+            (MultiPrecision<Pow2.N16> nvalue, MultiPrecision<Pow2.N16> nerror, _) =
+                GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, -20, 0,
+                1e-120, GaussKronrodOrder.G32K65, discontinue_eval_points: 262144
             );
 
             Console.WriteLine($"{nvalue}\n{nerror:e20}");
 
-            (MultiPrecision<Pow2.N16> pvalue, MultiPrecision<Pow2.N16> perror) =
+            (MultiPrecision<Pow2.N16> pvalue, MultiPrecision<Pow2.N16> perror, _) =
                 GaussKronrodIntegral<Pow2.N16>.AdaptiveIntegrate(info, 0, MultiPrecision<Pow2.N16>.PositiveInfinity,
-                1e-120, GaussKronrodOrder.G32K65, 128
+                1e-120, GaussKronrodOrder.G32K65, discontinue_eval_points: 262144
             );
 
             Console.WriteLine($"{pvalue}\n{perror:e20}");

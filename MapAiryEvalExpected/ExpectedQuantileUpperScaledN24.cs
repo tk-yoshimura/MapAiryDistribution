@@ -4,7 +4,7 @@ using MultiPrecisionRootFinding;
 
 namespace MapAiryEvalExpected {
     internal class ExpectedQuantileUpperScaledN24 {
-        static void Main() {
+        static void Main_() {
             using (BinaryWriter sw = new(File.Open("../../../../results_disused/quantile_upper_precision230_scaled.bin", FileMode.Create))) {
                 MultiPrecision<N24> x = "3.361262993547751e2";
 

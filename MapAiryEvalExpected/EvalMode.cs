@@ -1,7 +1,7 @@
 ﻿using MapAiryPadeApprox;
 using MultiPrecision;
 using MultiPrecisionRootFinding;
-using MultiPresicionDifferentiate;
+using MultiPrecisionDifferentiate;
 
 namespace MapAiryEvalExpected {
     internal class SearchMode {
