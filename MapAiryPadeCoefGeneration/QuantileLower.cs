@@ -7,39 +7,25 @@ namespace MapAiryPadeCoefGeneration {
         static void Main_() {
             List<(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [];
 
-            for (MultiPrecision<Pow2.N64> pmin = 2; pmin < 8; pmin *= 2) {
+            for (MultiPrecision<Pow2.N64> pmin = 1; pmin < 8; pmin *= 2) {
                 ranges.Add((pmin, pmin * 2, pmin / 256));
             }
-            for (MultiPrecision<Pow2.N64> pmin = 8; pmin < 1024; pmin *= 2) {
+            for (MultiPrecision<Pow2.N64> pmin = 8; pmin < 1048576; pmin *= 2) {
                 ranges.Add((pmin, pmin * 2, pmin / 128));
             }
 
             List<(MultiPrecision<Pow2.N64> p, MultiPrecision<Pow2.N64> y)> expecteds = [];
 
-            using (StreamReader sr = new("../../../../results_disused/quantile_precision148_loglog_2.csv")) {
-                sr.ReadLine();
-
-                while (!sr.EndOfStream) {
-                    string? line = sr.ReadLine();
-
-                    if (string.IsNullOrWhiteSpace(line)) {
-                        break;
-                    }
-
-                    string[] line_split = line.Split(",");
-
-                    MultiPrecision<Pow2.N64> p = line_split[0];
-                    MultiPrecision<Pow2.N64> x = line_split[1];
-
-                    if (p > ranges[^1].pmax) {
-                        break;
-                    }
+            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/quantile_lower_precision150.bin"))) {
+                while (sr.BaseStream.Position < sr.BaseStream.Length) {
+                    MultiPrecision<Pow2.N64> p = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+                    MultiPrecision<Pow2.N64> x = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
 
                     expecteds.Add((p, x));
                 }
             }
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_limitplus_precision145.csv")) {
+            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_lower_precision150.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax) {
                     Console.WriteLine($"[{pmin}, {pmax}]");
 
@@ -66,65 +52,63 @@ namespace MapAiryPadeCoefGeneration {
 
                             Console.WriteLine($"mcount: {param.Count(item => item.val.Sign != Sign.Plus)}");
 
-                            if (coefs > 8 && max_rateerr > "1e-15") {
+                            if (coefs > 8 && max_rateerr > "1e-13") {
                                 return false;
                             }
 
-                            if (coefs > 16 && max_rateerr > "1e-30") {
+                            if (coefs > 16 && max_rateerr > "1e-26") {
                                 return false;
                             }
 
-                            if (coefs > 32 && max_rateerr > "1e-60") {
+                            if (coefs > 32 && max_rateerr > "1e-52") {
                                 return false;
                             }
 
-                            if (max_rateerr > "1e-45") {
+                            if (max_rateerr > "1e-50") {
                                 coefs += 16;
                                 break;
                             }
 
-                            if (max_rateerr > "1e-95") {
+                            if (max_rateerr > "1e-100") {
                                 coefs += 8;
                                 break;
                             }
 
-                            if (max_rateerr > "1e-130") {
+                            if (max_rateerr > "1e-135") {
                                 coefs += 4;
                                 break;
                             }
 
-                            if (max_rateerr > "1e-135") {
+                            if (max_rateerr > "1e-140") {
                                 coefs += 2;
                                 break;
                             }
 
-                            if (max_rateerr > "1e-140") {
+                            if (max_rateerr > "1e-145") {
                                 break;
                             }
 
-                            if (max_rateerr < "1e-160") {
-                                return false;
-                            }
-
-                            if (max_rateerr < "1e-145" &&
+                            if (max_rateerr < "1e-150" &&
                                 !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[..m], 0, pmax - pmin) &&
                                 !CurveFittingUtils.HasLossDigitsPolynomialCoef(param[m..], 0, pmax - pmin)) {
 
                                 sw.WriteLine($"p=[{pmin},{pmax}]");
                                 sw.WriteLine($"m={m},n={n}");
+                                sw.WriteLine($"expecteds {expecteds_range.Count} samples");
+                                sw.WriteLine($"sample rate {(double)expecteds_range.Count / (param.Dim - 1)}");
 
                                 sw.WriteLine("numer");
                                 foreach (var (_, val) in param[..m]) {
-                                    sw.WriteLine($"{val:e150}");
+                                    sw.WriteLine($"{val:e155}");
                                 }
                                 sw.WriteLine("denom");
                                 foreach (var (_, val) in param[m..]) {
-                                    sw.WriteLine($"{val:e150}");
+                                    sw.WriteLine($"{val:e155}");
                                 }
 
                                 sw.WriteLine("coef");
                                 foreach ((var numer, var denom) in CurveFittingUtils.EnumeratePadeCoef(param, m, n)) {
-                                    sw.WriteLine($"(\"{numer:e150}\", \"{denom:e150}\"),");
+                                    sw.WriteLine($"(\"{numer:e155}\", \"{denom:e155}\"),");
                                 }
 
                                 sw.WriteLine("relative err");

@@ -3,29 +3,27 @@ using MultiPrecisionAlgebra;
 using MultiPrecisionCurveFitting;
 
 namespace MapAiryPadeCoefGeneration {
-    internal class QuantileUpper {
-        static void Main_() {
+    internal class QuantileUpperLimit {
+        static void Main() {
             List<(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax, MultiPrecision<Pow2.N64> limit_range)> ranges = [];
 
-            for (MultiPrecision<Pow2.N64> pmin = 2; pmin < 8; pmin *= 2) {
-                ranges.Add((pmin, pmin * 2, pmin / 256));
-            }
-            for (MultiPrecision<Pow2.N64> pmin = 8; pmin < 1024; pmin *= 2) {
+            for (MultiPrecision<Pow2.N64> pmin = 16; pmin < 512; pmin *= 2) {
                 ranges.Add((pmin, pmin * 2, pmin / 128));
             }
+            ranges.Add((512, 768, 0.25));
 
             List<(MultiPrecision<Pow2.N64> p, MultiPrecision<Pow2.N64> y)> expecteds = [];
 
-            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/quantile_upper_precision150_scaled.bin"))) {
+            using (BinaryReader sr = new(File.OpenRead("../../../../results_disused/quantile_upper_precision230_scaled.bin"))) {
                 while (sr.BaseStream.Position < sr.BaseStream.Length) {
-                    MultiPrecision<Pow2.N64> p = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
-                    MultiPrecision<Pow2.N64> x = sr.ReadMultiPrecision<Pow2.N16>().Convert<Pow2.N64>();
+                    MultiPrecision<Pow2.N64> p = sr.ReadMultiPrecision<N24>().Convert<Pow2.N64>();
+                    MultiPrecision<Pow2.N64> x = sr.ReadMultiPrecision<N24>().Convert<Pow2.N64>();
 
                     expecteds.Add((p, x));
                 }
             }
 
-            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_upper_precision150_scaled.csv")) {
+            using (StreamWriter sw = new("../../../../results_disused/pade_quantile_upper_precision150_scaled_exp16.csv")) {
                 bool approximate(MultiPrecision<Pow2.N64> pmin, MultiPrecision<Pow2.N64> pmax) {
                     Console.WriteLine($"[{pmin}, {pmax}]");
 

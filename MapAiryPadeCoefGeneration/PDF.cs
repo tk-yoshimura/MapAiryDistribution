@@ -1,6 +1,6 @@
 ﻿namespace MapAiryPadeCoefGeneration {
     internal class PDF {
-        static void Main() {
+        static void Main_() {
             PDFPlus.Execute();
             PDFMinus.Execute();
             PDFMinusLimit.Execute();

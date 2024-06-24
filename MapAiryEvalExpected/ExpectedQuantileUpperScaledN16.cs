@@ -3,15 +3,13 @@ using MultiPrecision;
 using MultiPrecisionRootFinding;
 
 namespace MapAiryEvalExpected {
-    internal class ExpectedQuantilePlusScaledN16 {
+    internal class ExpectedQuantileUpperScaledN16 {
         static void Main_() {
-            using (StreamWriter sw = new("../../../../results_disused/quantile_precision148_plus_scaled.csv")) {
-                sw.WriteLine("u:=-log2(p),v:=cquantile(p)*p^(2/3)");
+            using (BinaryWriter sw = new(File.Open("../../../../results_disused/quantile_upper_precision150_scaled.bin", FileMode.Create))) {
+                MultiPrecision<Pow2.N16> x = "-0.2734763098101749523722883574736459560155353374157768601569825776256";
 
-                MultiPrecision<Pow2.N16> x = "0.1837312561018422068508368747726198241616025315632555412006096259699";
-
-                for (MultiPrecision<Pow2.N16> u0 = 2; u0 < 1024; u0 *= 2) {
-                    for (MultiPrecision<Pow2.N16> u = u0; u < u0 * 2; u += u0 / (u0 < 4 ? 65536 : 32768)) {
+                for (MultiPrecision<Pow2.N16> u0 = 1; u0 <= 1024; u0 *= 2) {
+                    for (MultiPrecision<Pow2.N16> u = u0; u < u0 * 2 && u <= 1024; u += u0 / (u0 < 4 ? 65536 : 32768)) {
                         MultiPrecision<Pow2.N16> p = MultiPrecision<Pow2.N16>.Pow2(-u);
 
                         x = NewtonRaphsonFinder<Pow2.N16>.RootFind(
@@ -23,7 +21,8 @@ namespace MapAiryEvalExpected {
 
                         Console.WriteLine($"{u}\n{v}\n");
 
-                        sw.WriteLine($"{u},{v}");
+                        sw.Write(u);
+                        sw.Write(v);
                     }
                 }
             }

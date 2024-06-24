@@ -3,7 +3,7 @@ using MultiPrecision;
 
 namespace MapAiryEvalExpected {
     internal class ExpectedSummary {
-        static void Main() {
+        static void Main_() {
             using (StreamWriter sw = new("../../../../results/pdf_precision150.csv")) {
                 sw.WriteLine("x,pdf(x)");
 
