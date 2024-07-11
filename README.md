@@ -80,6 +80,10 @@ The minus *x* side poly exponential decays.
 ## Double Precision (IEEE 754) Approx
 [FP64](https://github.com/tk-yoshimura/MapAiryDistributionFP64)
 
+## Report
+[ResearchGate](https://www.researchgate.net/publication/382138858_Numerical_Evaluation_and_High_Precision_Approximation_Formula_for_Map-Airy_Distribution)  
+[TechRxiv](https://www.techrxiv.org/users/661998/articles/1146038-numerical-evaluation-and-high-precision-approximation-formula-for-map-airy-distribution)  
+
 ## Reference
 
 ## See Also
